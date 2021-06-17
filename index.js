@@ -42,9 +42,25 @@ class Airplane {
   */
   
  class Person {
-    
-  }
+   constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+   }
   
+
+    eat(edible){
+        if (this.stomach.length < 10) {
+          this.stomach.push(edible);
+        }
+      } 
+      poop(){
+        this.stomach=[]
+      }
+      toString(){
+        return `${this.name} says ${this.age}`
+      }
+    }
   /*
     TASK 2
       - Write a Car class whose constructor initializes `model` and `milesPerGallon` from arguments.
@@ -59,9 +75,33 @@ class Airplane {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- class Car {
-    
-  }
+          class Car {
+            constructor(model,milesPerGallon){
+              this.tank = 0;
+              this.odometer = 0;
+              this.model = model;
+              this.milesPerGallon = milesPerGallon;
+            }
+             fill(gallons){
+               this.tank += gallons;
+         
+             }
+             drive(distance){
+               if (this.milesPerGallon*this.tank > distance){
+                 this.odometer = this.odometer + distance;
+                 this.tank = this.tank - distance/this.milesPerGallon;
+                 return;
+               }else if (this.milesPerGallon*this.tank === distance){
+                 this.odometer = this.odometer + distance;
+                 this.tank= 0;
+                 return `I ran out of fuel at ${this.odometer} miles!`;
+               }else{
+                 this.odometer = this.odometer +this.milesPerGallon*this.tank;
+                 this.tank=0;
+                 return `I ran out of fuel at ${this.odometer} miles!`;
+               }
+             }
+         }
   
   /*
     TASK 3
@@ -76,8 +116,10 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
+ }
+  
     
-  }
+  
   
   /*
     TASK 4
